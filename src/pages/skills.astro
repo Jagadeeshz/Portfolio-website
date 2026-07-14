@@ -3,30 +3,32 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const skillCategories = [
   {
-    name: 'Frontend',
-    skills: ['HTML', 'CSS', 'JavaScript', 'React', 'TypeScript', 'Vue.js'],
+    category: 'Backend & Core',
+    icon: 'fas fa-server',
+    items: ['Python', 'Django'],
   },
   {
-    name: 'Backend',
-    skills: ['Node.js', 'Python', 'Express', 'Flask', 'REST APIs'],
+    category: 'Frontend',
+    icon: 'fas fa-palette',
+    items: ['HTML', 'CSS'],
   },
   {
-    name: 'Tools & Platforms',
-    skills: ['Git', 'Docker', 'AWS', 'Firebase', 'VS Code', 'Linux'],
+    category: 'Database',
+    icon: 'fas fa-database',
+    items: ['MySQL'],
   },
   {
-    name: 'Databases',
-    skills: ['MongoDB', 'PostgreSQL', 'MySQL', 'Redis'],
-  },
-  {
-    name: 'Soft Skills',
-    skills: ['Teamwork', 'Communication', 'Problem Solving', 'Adaptability'],
-  },
-  {
-    name: 'Other Interests',
-    skills: ['UI/UX Design', 'Photography', 'Open Source', 'Tech Blogging'],
+    category: 'Tools & Cloud',
+    icon: 'fas fa-tools',
+    items: ['GitHub', 'AWS (Basics)'],
   },
 ];
+
+const featuredSkill = {
+  category: 'Specialized Frameworks & Deep Learning',
+  icon: 'fas fa-brain',
+  items: ['TensorFlow', 'Keras', 'GANs', 'OpenCV', 'UNet++'],
+};
 ---
 
 <BaseLayout title="Skills">
@@ -39,13 +41,30 @@ const skillCategories = [
 
   <section class="section">
     <div class="container">
-      <div class="grid grid-3">
-        {skillCategories.map((cat) => (
-          <div class="about-card" style="padding: 1.5rem;">
-            <h3 style="color: var(--gold); font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 2px solid rgba(218, 165, 32, 0.2);">{cat.name}</h3>
-            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-              {cat.skills.map((skill) => (
-                <span style="background: var(--bg-dark); color: var(--text-secondary); padding: 6px 14px; border-radius: 8px; font-size: 0.85rem; font-weight: 500; transition: all 0.2s; border: 1px solid rgba(218, 165, 32, 0.1);">{skill}</span>
+      <!-- Featured full-width card -->
+      <div class="skill-card skill-card-featured">
+        <div class="skill-card-header">
+          <i class={featuredSkill.icon}></i>
+          <h3>{featuredSkill.category}</h3>
+        </div>
+        <div class="skill-tags">
+          {featuredSkill.items.map((item) => (
+            <span class="skill-tag">{item}</span>
+          ))}
+        </div>
+      </div>
+
+      <!-- Standard grid -->
+      <div class="skills-grid">
+        {skillCategories.map((skill) => (
+          <div class="skill-card">
+            <div class="skill-card-header">
+              <i class={skill.icon}></i>
+              <h3>{skill.category}</h3>
+            </div>
+            <div class="skill-tags">
+              {skill.items.map((item) => (
+                <span class="skill-tag">{item}</span>
               ))}
             </div>
           </div>
@@ -54,3 +73,82 @@ const skillCategories = [
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .skill-card-featured {
+    margin-bottom: 1.5rem;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skill-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .skill-card:hover {
+    border-color: var(--gold-border-strong);
+    transform: translateY(-4px);
+  }
+
+  .skill-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .skill-card-header i {
+    font-size: 1.3rem;
+    color: var(--gold);
+  }
+
+  .skill-card-header h3 {
+    font-size: 1rem;
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .skill-tag {
+    background: var(--bg-dark);
+    color: var(--text-secondary);
+    padding: 6px 16px;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: 1px solid var(--border);
+    transition: all 0.25s ease;
+  }
+
+  .skill-tag:hover {
+    background: var(--gold-bg-strong);
+    color: var(--gold);
+    border-color: var(--gold-border-strong);
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 600px) {
+    .skills-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .skill-card-featured .skill-tags {
+      justify-content: center;
+    }
+  }
+</style>

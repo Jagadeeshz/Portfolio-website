@@ -3,34 +3,39 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const projects = [
   {
-    title: 'Project Alpha',
-    description: 'A web application built with modern technologies to solve real-world problems efficiently.',
-    tags: ['React', 'Node.js', 'MongoDB'],
+    title: 'Enhancing Salt Segmentation in Seismic Images Using UNet++ and GANs',
+    badge: 'Academic Research',
+    icon: 'fas fa-microscope',
+    tags: ['Python', 'TensorFlow', 'Keras', 'GANs', 'OpenCV', 'UNet++'],
+    highlights: [
+      'Developed a novel salt segmentation framework by integrating GAN-based image enhancement with a modified UNet++ architecture for improved seismic image analysis.',
+      'Achieved superior segmentation accuracy in identifying complex salt formations in seismic datasets.',
+      'Optimized model performance through hyperparameter tuning and advanced data augmentation techniques.',
+      'Reduced false positives in salt boundary detection by implementing a hybrid loss function combining Dice Loss and Binary Cross-Entropy (BCE).',
+      'Evaluated model performance using IoU, Dice Coefficient, Precision, and Recall metrics.',
+    ],
+    metrics: [
+      { icon: 'fas fa-bullseye', label: 'IoU & Dice Coefficient' },
+      { icon: 'fas fa-chart-line', label: 'Precision & Recall' },
+      { icon: 'fas fa-compress-arrows-alt', label: 'Hybrid Loss (Dice + BCE)' },
+    ],
   },
   {
-    title: 'Project Beta',
-    description: 'An innovative tool that streamlines workflows and improves productivity for teams.',
-    tags: ['Python', 'Flask', 'PostgreSQL'],
-  },
-  {
-    title: 'Project Gamma',
-    description: 'A creative platform designed to showcase and share digital art and photography.',
-    tags: ['Next.js', 'TypeScript', 'AWS'],
-  },
-  {
-    title: 'Project Delta',
-    description: 'A mobile-first application focused on delivering seamless user experiences.',
-    tags: ['Flutter', 'Firebase', 'Dart'],
-  },
-  {
-    title: 'Project Epsilon',
-    description: 'An open-source library that simplifies complex data visualization tasks.',
-    tags: ['D3.js', 'JavaScript', 'CSS'],
-  },
-  {
-    title: 'Project Zeta',
-    description: 'A comprehensive dashboard for monitoring and analyzing key metrics in real-time.',
-    tags: ['Vue.js', 'Express', 'Redis'],
+    title: 'Personal Portfolio Website',
+    badge: 'Personal Project',
+    icon: 'fas fa-code',
+    tags: ['Astro', 'HTML', 'CSS', 'JavaScript'],
+    highlights: [
+      'Designed and developed a professional portfolio website from scratch to showcase technical projects, skills, and personal brand.',
+      'Implemented a dark-themed, responsive design with gold accent color system for a distinctive visual identity.',
+      'Built with Astro for fast static site generation, ensuring optimal performance and SEO.',
+      'Structured content across dedicated pages including Home, About, Skills, Projects, Experience, and Contact.',
+    ],
+    metrics: [
+      { icon: 'fas fa-bolt', label: 'Static Site Generation' },
+      { icon: 'fas fa-mobile-alt', label: 'Fully Responsive' },
+      { icon: 'fas fa-search', label: 'SEO Optimized' },
+    ],
   },
 ];
 ---
@@ -45,18 +50,40 @@ const projects = [
 
   <section class="section">
     <div class="container">
-      <div class="grid grid-3">
+      <div class="projects-list">
         {projects.map((project) => (
-          <div class="about-card" style="padding: 1.5rem;">
-            <div style="width: 48px; height: 48px; border-radius: 12px; background: var(--gradient-primary); color: #000; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem;">
-              {project.title.charAt(0)}
-            </div>
-            <h3 style="color: var(--gold); font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem;">{project.title}</h3>
-            <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem; flex: 1;">{project.description}</p>
-            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-              {project.tags.map((tag) => (
-                <span style="background: rgba(218, 165, 32, 0.1); color: var(--gold); padding: 4px 12px; border-radius: 16px; font-size: 0.8rem; font-weight: 500; border: 1px solid rgba(218, 165, 32, 0.2);">{tag}</span>
-              ))}
+          <div class="project-card">
+            <div class="project-card-accent"></div>
+            <div class="project-card-body">
+              <div class="project-card-top">
+                <div class="project-icon">
+                  <i class={project.icon}></i>
+                </div>
+                <div class="project-badge">{project.badge}</div>
+              </div>
+
+              <h3 class="project-title">{project.title}</h3>
+
+              <div class="project-tech-tags">
+                {project.tags.map((tag) => (
+                  <span class="tech-tag">{tag}</span>
+                ))}
+              </div>
+
+              <ul class="project-highlights">
+                {project.highlights.map((point) => (
+                  <li>{point}</li>
+                ))}
+              </ul>
+
+              <div class="project-metrics">
+                {project.metrics.map((m) => (
+                  <div class="metric">
+                    <i class={m.icon}></i>
+                    <span>{m.label}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         ))}
@@ -64,3 +91,154 @@ const projects = [
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .project-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    transition: box-shadow 0.3s ease;
+  }
+
+  .project-card:hover {
+    box-shadow: 0 8px 40px rgba(244, 196, 20, 0.08);
+  }
+
+  .project-card-accent {
+    width: 6px;
+    background: var(--gradient-primary);
+    flex-shrink: 0;
+  }
+
+  .project-card-body {
+    padding: 2.5rem;
+    flex: 1;
+  }
+
+  .project-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+  }
+
+  .project-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: var(--gradient-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: #0d0d0c;
+  }
+
+  .project-badge {
+    background: var(--gold-bg-strong);
+    color: var(--gold);
+    padding: 0.35rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid var(--gold-border-strong);
+  }
+
+  .project-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.4;
+    margin-bottom: 1rem;
+  }
+
+  .project-tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .tech-tag {
+    background: var(--gold-bg);
+    color: var(--gold);
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: 1px solid var(--gold-border-strong);
+  }
+
+  .project-highlights {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.75rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .project-highlights li {
+    position: relative;
+    padding-left: 1.5rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .project-highlights li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6rem;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+
+  .project-metrics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .metric {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--gold-bg);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+  }
+
+  .metric i {
+    color: var(--gold);
+  }
+
+  @media (max-width: 600px) {
+    .project-card-body {
+      padding: 1.5rem;
+    }
+
+    .project-title {
+      font-size: 1.2rem;
+    }
+
+    .project-metrics {
+      flex-direction: column;
+    }
+  }
+</style>

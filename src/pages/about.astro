@@ -53,6 +53,13 @@ const education = [
         </div>
       </div>
 
+      <!-- Gallery Image -->
+      <div class="gallery-showcase">
+        <div class="gallery-image-wrapper">
+          <img src="/images/gallery-1.jpg" alt="A moment from my journey" class="gallery-img" />
+        </div>
+      </div>
+
       <!-- Content Block B: About Website -->
       <div class="about-card">
         <h2 class="about-card-title">About This Website</h2>
@@ -118,6 +125,36 @@ const education = [
 </BaseLayout>
 
 <style>
+  .gallery-showcase {
+    margin: 2rem 0;
+  }
+
+  .gallery-image-wrapper {
+    background: var(--bg-card);
+    border: 2px solid var(--gold-border-strong);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(244, 196, 20, 0.1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .gallery-image-wrapper:hover {
+    border-color: var(--gold);
+    box-shadow: 0 0 50px rgba(244, 196, 20, 0.2);
+  }
+
+  .gallery-img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .gallery-image-wrapper:hover .gallery-img {
+    transform: scale(1.03);
+  }
+
   .edu-section {
     margin-top: 3rem;
   }
@@ -195,6 +232,10 @@ const education = [
   @media (max-width: 600px) {
     .edu-grid {
       grid-template-columns: 1fr;
+    }
+
+    .gallery-img {
+      height: 260px;
     }
   }
 </style>
