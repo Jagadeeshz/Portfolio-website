@@ -1,5 +1,20 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const education = [
+  {
+    degree: 'Master of Computer Applications (MCA)',
+    institution: "Vignan's University, Andhra Pradesh",
+    period: '2022 — 2024',
+    cgpa: '7.5',
+  },
+  {
+    degree: 'Bachelor of Computer Science (Statistics)',
+    institution: 'T.J.P.S Degree College, Andhra Pradesh',
+    period: '2019 — 2022',
+    cgpa: '6.92',
+  },
+];
 ---
 
 <BaseLayout title="About">
@@ -10,11 +25,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
+  <!-- Content Block A: About Me -->
   <section class="section">
     <div class="container">
       <div class="about-card">
-        <h2 class="about-card-title">Beyond the Screen</h2>
-
+        <h2 class="about-card-title">About Me</h2>
         <div class="about-content">
           <p>
             Hailing from the quiet town of Etukur in Guntur, Andhra Pradesh, I
@@ -23,7 +38,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             simple, cool guy who believes that life is best measured by the happy
             moments and the people you share them with.
           </p>
-
           <p>
             My family is my ultimate anchor; there is nothing better than the
             quiet comfort, laughter, and grounding conversations back home. On
@@ -31,20 +45,36 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             roadside tea chats to running the campus like we owned it, making
             memories and sharing laughs with the boys is what keeps life vibrant.
           </p>
-
           <p>
             No pretense, no fluff&mdash;just a small-town dreamer navigating life
             with a sharp sense of style, casual confidence, and a tight-knit
             circle.
           </p>
-
-          <div class="quote">
-            <p class="quote-text">"Life is best measured by the happy moments and the people you share them with."</p>
-            <p class="quote-author">&mdash; Jagadeesh</p>
-          </div>
         </div>
       </div>
 
+      <!-- Content Block B: About Website -->
+      <div class="about-card">
+        <h2 class="about-card-title">About This Website</h2>
+        <div class="about-content">
+          <p>
+            This website isn't just a collection of code, grids, and
+            colors&mdash;it is a digital canvas where my two worlds meet. Built
+            from scratch inside VS Code, every line of HTML and CSS written here
+            holds a piece of my journey. It represents the transition of a boy
+            from Etukur who dared to dream big, transforming silent ambitions
+            into something tangible that the world can see.
+          </p>
+          <p>
+            When you look at this site, you aren't just looking at a professional
+            portfolio; you are looking at my dedication, my late nights, and my
+            promise to keep moving forward. It's a bridge built with heart,
+            connecting where I come from to exactly where I am headed.
+          </p>
+        </div>
+      </div>
+
+      <!-- Stats -->
       <div class="stats-grid">
         <div class="stat-card">
           <div class="stat-number">1</div>
@@ -63,6 +93,108 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <div class="stat-label">MCA CGPA</div>
         </div>
       </div>
+
+      <!-- Education -->
+      <div class="edu-section">
+        <h2 class="about-card-title">Education</h2>
+        <div class="edu-grid">
+          {education.map((edu) => (
+            <div class="edu-micro-card">
+              <div class="edu-micro-icon">
+                <i class="fas fa-graduation-cap"></i>
+              </div>
+              <h4 class="edu-micro-degree">{edu.degree}</h4>
+              <p class="edu-micro-institution">{edu.institution}</p>
+              <div class="edu-micro-meta">
+                <span><i class="far fa-calendar-alt"></i> {edu.period}</span>
+                <span class="edu-micro-cgpa"><i class="fas fa-star"></i> CGPA: {edu.cgpa}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .edu-section {
+    margin-top: 3rem;
+  }
+
+  .edu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .edu-micro-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .edu-micro-card:hover {
+    border-color: var(--gold-border-strong);
+    box-shadow: var(--elevation-2);
+  }
+
+  .edu-micro-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: var(--gold-bg-strong);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .edu-micro-degree {
+    font-size: 1rem;
+    color: var(--text-primary);
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    line-height: 1.4;
+  }
+
+  .edu-micro-institution {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin-bottom: 0.6rem;
+  }
+
+  .edu-micro-meta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .edu-micro-meta span {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .edu-micro-meta span i {
+    color: var(--gold);
+    font-size: 0.75rem;
+  }
+
+  .edu-micro-cgpa {
+    font-weight: 600;
+    color: var(--gold) !important;
+  }
+
+  @media (max-width: 600px) {
+    .edu-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
