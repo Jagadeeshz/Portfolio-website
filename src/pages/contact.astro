@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Contact">
+  <section class="page-hero">
+    <div class="container">
+      <h1 class="page-hero-title">Get in Touch</h1>
+      <p class="page-hero-description">I'd love to hear from you</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-2">
+        <div class="about-card" style="padding: 2rem;">
+          <h2 class="about-card-title" style="font-size: 1.5rem;">Let's Connect</h2>
+          <p class="about-content" style="margin-bottom: 1.5rem;">Feel free to reach out for collaborations, opportunities, or just a friendly chat.</p>
+          <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+            <div style="display: flex; gap: 0.75rem; align-items: flex-start;">
+              <span style="font-size: 1.5rem; line-height: 1;">📧</span>
+              <div>
+                <strong style="display: block; font-size: 0.9rem; margin-bottom: 0.15rem; color: var(--text-primary);">Email</strong>
+                <p style="color: var(--text-secondary); font-size: 0.9rem;">jagadeesh@example.com</p>
+              </div>
+            </div>
+            <div style="display: flex; gap: 0.75rem; align-items: flex-start;">
+              <span style="font-size: 1.5rem; line-height: 1;">📍</span>
+              <div>
+                <strong style="display: block; font-size: 0.9rem; margin-bottom: 0.15rem; color: var(--text-primary);">Location</strong>
+                <p style="color: var(--text-secondary); font-size: 0.9rem;">India</p>
+              </div>
+            </div>
+            <div style="display: flex; gap: 0.75rem; align-items: flex-start;">
+              <span style="font-size: 1.5rem; line-height: 1;">🐙</span>
+              <div>
+                <strong style="display: block; font-size: 0.9rem; margin-bottom: 0.15rem; color: var(--text-primary);">GitHub</strong>
+                <p style="color: var(--text-secondary); font-size: 0.9rem;">github.com/jagadeesh</p>
+              </div>
+            </div>
+            <div style="display: flex; gap: 0.75rem; align-items: flex-start;">
+              <span style="font-size: 1.5rem; line-height: 1;">🔗</span>
+              <div>
+                <strong style="display: block; font-size: 0.9rem; margin-bottom: 0.15rem; color: var(--text-primary);">LinkedIn</strong>
+                <p style="color: var(--text-secondary); font-size: 0.9rem;">linkedin.com/in/jagadeesh</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <form class="about-card" style="padding: 2rem;" netlify>
+          <div style="margin-bottom: 1.25rem;">
+            <label for="name" style="display: block; font-size: 0.9rem; font-weight: 500; margin-bottom: 0.4rem; color: var(--text-primary);">Your Name</label>
+            <input type="text" id="name" name="name" required placeholder="John Doe" style="width: 100%; padding: 12px 14px; border: 2px solid rgba(218, 165, 32, 0.2); border-radius: 8px; font-size: 0.95rem; font-family: var(--font-body); transition: border-color 0.2s; background: var(--bg-dark); color: var(--text-primary);" />
+          </div>
+          <div style="margin-bottom: 1.25rem;">
+            <label for="email" style="display: block; font-size: 0.9rem; font-weight: 500; margin-bottom: 0.4rem; color: var(--text-primary);">Your Email</label>
+            <input type="email" id="email" name="email" required placeholder="john@example.com" style="width: 100%; padding: 12px 14px; border: 2px solid rgba(218, 165, 32, 0.2); border-radius: 8px; font-size: 0.95rem; font-family: var(--font-body); transition: border-color 0.2s; background: var(--bg-dark); color: var(--text-primary);" />
+          </div>
+          <div style="margin-bottom: 1.25rem;">
+            <label for="subject" style="display: block; font-size: 0.9rem; font-weight: 500; margin-bottom: 0.4rem; color: var(--text-primary);">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="What's this about?" style="width: 100%; padding: 12px 14px; border: 2px solid rgba(218, 165, 32, 0.2); border-radius: 8px; font-size: 0.95rem; font-family: var(--font-body); transition: border-color 0.2s; background: var(--bg-dark); color: var(--text-primary);" />
+          </div>
+          <div style="margin-bottom: 1.25rem;">
+            <label for="message" style="display: block; font-size: 0.9rem; font-weight: 500; margin-bottom: 0.4rem; color: var(--text-primary);">Message</label>
+            <textarea id="message" name="message" rows="5" required placeholder="Your message here..." style="width: 100%; padding: 12px 14px; border: 2px solid rgba(218, 165, 32, 0.2); border-radius: 8px; font-size: 0.95rem; font-family: var(--font-body); transition: border-color 0.2s; background: var(--bg-dark); color: var(--text-primary); resize: vertical;"></textarea>
+          </div>
+          <button type="submit" style="width: 100%; padding: 12px 24px; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; border: none; background: var(--gradient-primary); color: #000; transition: all 0.3s ease;">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  input:focus,
+  textarea:focus {
+    outline: none;
+    border-color: var(--gold) !important;
+    box-shadow: 0 0 0 3px rgba(218, 165, 32, 0.15);
+  }
+
+  button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(218, 165, 32, 0.3);
+  }
+</style>

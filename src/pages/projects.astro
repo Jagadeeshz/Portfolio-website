@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const projects = [
+  {
+    title: 'Project Alpha',
+    description: 'A web application built with modern technologies to solve real-world problems efficiently.',
+    tags: ['React', 'Node.js', 'MongoDB'],
+  },
+  {
+    title: 'Project Beta',
+    description: 'An innovative tool that streamlines workflows and improves productivity for teams.',
+    tags: ['Python', 'Flask', 'PostgreSQL'],
+  },
+  {
+    title: 'Project Gamma',
+    description: 'A creative platform designed to showcase and share digital art and photography.',
+    tags: ['Next.js', 'TypeScript', 'AWS'],
+  },
+  {
+    title: 'Project Delta',
+    description: 'A mobile-first application focused on delivering seamless user experiences.',
+    tags: ['Flutter', 'Firebase', 'Dart'],
+  },
+  {
+    title: 'Project Epsilon',
+    description: 'An open-source library that simplifies complex data visualization tasks.',
+    tags: ['D3.js', 'JavaScript', 'CSS'],
+  },
+  {
+    title: 'Project Zeta',
+    description: 'A comprehensive dashboard for monitoring and analyzing key metrics in real-time.',
+    tags: ['Vue.js', 'Express', 'Redis'],
+  },
+];
+---
+
+<BaseLayout title="Projects">
+  <section class="page-hero">
+    <div class="container">
+      <h1 class="page-hero-title">My Projects</h1>
+      <p class="page-hero-description">Things I've built and contributed to</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-3">
+        {projects.map((project) => (
+          <div class="about-card" style="padding: 1.5rem;">
+            <div style="width: 48px; height: 48px; border-radius: 12px; background: var(--gradient-primary); color: #000; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem;">
+              {project.title.charAt(0)}
+            </div>
+            <h3 style="color: var(--gold); font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem;">{project.title}</h3>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem; flex: 1;">{project.description}</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+              {project.tags.map((tag) => (
+                <span style="background: rgba(218, 165, 32, 0.1); color: var(--gold); padding: 4px 12px; border-radius: 16px; font-size: 0.8rem; font-weight: 500; border: 1px solid rgba(218, 165, 32, 0.2);">{tag}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

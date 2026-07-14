@@ -1,0 +1,438 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Personal portfolio of Tanniru Jagadeesh Kumar' } = Astro.props;
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} | Tanniru Jagadeesh Kumar</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  </head>
+  <body>
+    <header class="header" id="main-header">
+      <div class="header-main">
+        <div class="container">
+          <a href="/" class="logo">
+            <div class="logo-text">
+              <div class="logo-title">JAGADEESH</div>
+              <div class="logo-subtitle">LIVE WITH INTENT</div>
+            </div>
+          </a>
+
+          <nav class="nav" id="nav-menu">
+            <a href="/" class={currentPath === '/' ? 'active' : ''}>
+              <i class="fas fa-home"></i> Home
+            </a>
+            <a href="/about" class={currentPath === '/about' ? 'active' : ''}>
+              <i class="fas fa-user"></i> About
+            </a>
+            <a href="/projects" class={currentPath === '/projects' ? 'active' : ''}>
+              <i class="fas fa-code"></i> Projects
+            </a>
+            <a href="/skills" class={currentPath === '/skills' ? 'active' : ''}>
+              <i class="fas fa-cogs"></i> Skills
+            </a>
+            <a href="/experience" class={currentPath === '/experience' ? 'active' : ''}>
+              <i class="fas fa-briefcase"></i> Experience
+            </a>
+            <a href="/gallery" class={currentPath === '/gallery' ? 'active' : ''}>
+              <i class="fas fa-images"></i> Gallery
+            </a>
+            <a href="/friends" class={currentPath === '/friends' ? 'active' : ''}>
+              <i class="fas fa-users"></i> Friends
+            </a>
+            <a href="/contact" class={currentPath === '/contact' ? 'active' : ''}>
+              <i class="fas fa-envelope"></i> Contact
+            </a>
+          </nav>
+
+          <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
+            <span class="hamburger"></span>
+          </button>
+        </div>
+      </div>
+      <div class="menu-overlay" id="menu-overlay"></div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="footer">
+      <div class="footer-main">
+        <div class="container">
+          <div class="footer-grid">
+            <div class="footer-col">
+              <h3>About Me</h3>
+              <p>A passionate creator and lifelong learner. Exploring the intersection of technology, creativity, and human connection.</p>
+            </div>
+
+            <div class="footer-col">
+              <h3>Quick Links</h3>
+              <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/projects">Projects</a></li>
+                <li><a href="/skills">Skills</a></li>
+                <li><a href="/experience">Experience</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-col">
+              <h3>More</h3>
+              <ul>
+                <li><a href="/gallery">Gallery</a></li>
+                <li><a href="/friends">Friends</a></li>
+                <li><a href="/contact">Contact</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-col">
+              <h3>Follow Me</h3>
+              <div class="footer-social">
+                <a href="#" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" target="_blank" title="Twitter"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" target="_blank" title="Email"><i class="fas fa-envelope"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="container">
+          <p>&copy; {new Date().getFullYear()} Tanniru Jagadeesh Kumar. All rights reserved. | Made with ❤️ by <a href="#" style="color: #DAA520; text-decoration: none;">Jagadeesh</a></p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      window.addEventListener('scroll', () => {
+        const header = document.getElementById('main-header');
+        if (window.scrollY > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      });
+
+      document.getElementById('menu-toggle')?.addEventListener('click', () => {
+        document.getElementById('nav-menu')?.classList.toggle('open');
+        document.getElementById('menu-overlay')?.classList.toggle('open');
+        document.getElementById('menu-toggle')?.classList.toggle('active');
+      });
+
+      document.getElementById('menu-overlay')?.addEventListener('click', () => {
+        document.getElementById('nav-menu')?.classList.remove('open');
+        document.getElementById('menu-overlay')?.classList.remove('open');
+        document.getElementById('menu-toggle')?.classList.remove('active');
+      });
+    </script>
+  </body>
+</html>
+
+<style>
+  /* ============ HEADER ============ */
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+
+  .header.scrolled {
+    background: rgba(10, 10, 10, 0.95);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+  }
+
+  .header-main {
+    padding: 0.5rem 0;
+  }
+
+  .header-main .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .logo {
+    text-decoration: none;
+  }
+
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .logo-title {
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: var(--gold);
+    letter-spacing: 3px;
+    line-height: 1.1;
+  }
+
+  .logo-subtitle {
+    font-size: 0.65rem;
+    color: var(--text-secondary);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+  }
+
+  .nav {
+    display: flex;
+    gap: 0.25rem;
+    align-items: center;
+  }
+
+  .nav a {
+    padding: 8px 14px;
+    border-radius: 8px;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .nav a i {
+    font-size: 0.8rem;
+  }
+
+  .nav a:hover,
+  .nav a.active {
+    color: var(--gold);
+    background: rgba(218, 165, 32, 0.1);
+  }
+
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 1001;
+  }
+
+  .hamburger {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--gold);
+    position: relative;
+    transition: 0.3s;
+  }
+
+  .hamburger::before,
+  .hamburger::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 2px;
+    background: var(--gold);
+    transition: 0.3s;
+  }
+
+  .hamburger::before { top: -7px; }
+  .hamburger::after { top: 7px; }
+
+  .menu-toggle.active .hamburger {
+    background: transparent;
+  }
+
+  .menu-toggle.active .hamburger::before {
+    top: 0;
+    transform: rotate(45deg);
+  }
+
+  .menu-toggle.active .hamburger::after {
+    top: 0;
+    transform: rotate(-45deg);
+  }
+
+  .menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+  }
+
+  .menu-overlay.open {
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .menu-toggle {
+      display: block;
+    }
+
+    .nav {
+      display: none;
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 280px;
+      height: 100vh;
+      background: var(--bg-card);
+      flex-direction: column;
+      padding: 5rem 1.5rem 2rem;
+      box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
+      transition: right 0.3s ease;
+      z-index: 1000;
+      gap: 0.5rem;
+      overflow-y: auto;
+    }
+
+    .nav.open {
+      display: flex;
+      right: 0;
+    }
+
+    .nav a {
+      padding: 12px 16px;
+      font-size: 1rem;
+      width: 100%;
+      border-radius: 10px;
+    }
+  }
+
+  /* ============ FOOTER ============ */
+  .footer {
+    margin-top: auto;
+  }
+
+  .footer-main {
+    background: var(--bg-card);
+    border-top: 1px solid var(--gold-border);
+    padding: 3rem 0 2rem;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .footer-col h3 {
+    color: var(--gold);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+
+  .footer-col h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+  }
+
+  .footer-col p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .footer-col ul {
+    list-style: none;
+  }
+
+  .footer-col ul li {
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-col ul li a {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+  }
+
+  .footer-col ul li a:hover {
+    color: var(--gold);
+    padding-left: 5px;
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+
+  .footer-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(218, 165, 32, 0.1);
+    color: var(--gold);
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+
+  .footer-social a:hover {
+    background: var(--gold);
+    color: var(--bg-dark);
+    transform: translateY(-3px);
+  }
+
+  .footer-bottom {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 1.2rem 0;
+    border-top: 1px solid var(--gold-border);
+  }
+
+  .footer-bottom p {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .footer-col h3::after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .footer-social {
+      justify-content: center;
+    }
+  }
+</style>

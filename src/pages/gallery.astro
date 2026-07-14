@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const totalImages = 13;
+const galleryImages = Array.from({ length: totalImages }, (_, i) => ({
+  id: i + 1,
+  src: `/images/gallery-${i + 1}.jpg`,
+}));
+---
+
+<BaseLayout title="Gallery">
+  <section class="page-hero">
+    <div class="container">
+      <h1 class="page-hero-title">Gallery</h1>
+      <p class="page-hero-description">Moments captured through my lens</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem;">
+        {galleryImages.map((img) => (
+          <div class="about-card" style="padding: 0; overflow: hidden; aspect-ratio: 4/3; cursor: pointer;">
+            <img src={img.src} alt={`Photo ${img.id}`} loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .about-card:hover img {
+    transform: scale(1.05);
+  }
+</style>

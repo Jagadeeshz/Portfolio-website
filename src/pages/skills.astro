@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const skillCategories = [
+  {
+    name: 'Frontend',
+    skills: ['HTML', 'CSS', 'JavaScript', 'React', 'TypeScript', 'Vue.js'],
+  },
+  {
+    name: 'Backend',
+    skills: ['Node.js', 'Python', 'Express', 'Flask', 'REST APIs'],
+  },
+  {
+    name: 'Tools & Platforms',
+    skills: ['Git', 'Docker', 'AWS', 'Firebase', 'VS Code', 'Linux'],
+  },
+  {
+    name: 'Databases',
+    skills: ['MongoDB', 'PostgreSQL', 'MySQL', 'Redis'],
+  },
+  {
+    name: 'Soft Skills',
+    skills: ['Teamwork', 'Communication', 'Problem Solving', 'Adaptability'],
+  },
+  {
+    name: 'Other Interests',
+    skills: ['UI/UX Design', 'Photography', 'Open Source', 'Tech Blogging'],
+  },
+];
+---
+
+<BaseLayout title="Skills">
+  <section class="page-hero">
+    <div class="container">
+      <h1 class="page-hero-title">My Skills</h1>
+      <p class="page-hero-description">Technologies and abilities I bring to the table</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-3">
+        {skillCategories.map((cat) => (
+          <div class="about-card" style="padding: 1.5rem;">
+            <h3 style="color: var(--gold); font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 2px solid rgba(218, 165, 32, 0.2);">{cat.name}</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+              {cat.skills.map((skill) => (
+                <span style="background: var(--bg-dark); color: var(--text-secondary); padding: 6px 14px; border-radius: 8px; font-size: 0.85rem; font-weight: 500; transition: all 0.2s; border: 1px solid rgba(218, 165, 32, 0.1);">{skill}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

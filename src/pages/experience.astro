@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const experiences = [
+  {
+    title: 'Software Developer Intern',
+    organization: 'Tech Company',
+    period: '2025 - Present',
+    description: 'Working on full-stack web applications, collaborating with cross-functional teams to deliver features and improve code quality.',
+  },
+  {
+    title: 'Freelance Web Developer',
+    organization: 'Self-Employed',
+    period: '2024 - 2025',
+    description: 'Built and maintained websites for small businesses and individuals, focusing on responsive design and performance.',
+  },
+  {
+    title: 'Open Source Contributor',
+    organization: 'Community',
+    period: '2023 - Present',
+    description: 'Contributed to various open-source projects, fixing bugs, writing documentation, and adding new features.',
+  },
+  {
+    title: 'Project Lead - College Club',
+    organization: 'University',
+    period: '2023 - 2024',
+    description: 'Led a team of students in organizing tech events and workshops, fostering a culture of learning and innovation.',
+  },
+];
+---
+
+<BaseLayout title="Experience">
+  <section class="page-hero">
+    <div class="container">
+      <h1 class="page-hero-title">My Experience</h1>
+      <p class="page-hero-description">My professional journey and growth</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="about-card">
+        <h2 class="about-card-title">Work Experience</h2>
+        <div class="milestone-timeline">
+          {experiences.map((exp) => (
+            <div class="milestone-item">
+              <div class="milestone-year">{exp.period}</div>
+              <div class="milestone-title">{exp.title}</div>
+              <div class="milestone-description">{exp.organization} &mdash; {exp.description}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
