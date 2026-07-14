@@ -76,7 +76,7 @@ const currentPath = Astro.url.pathname;
           <div class="footer-grid">
             <div class="footer-col">
               <h3>About Me</h3>
-              <p>A passionate creator and lifelong learner. Exploring the intersection of technology, creativity, and human connection.</p>
+              <p>MCA graduate passionate about building intelligent solutions with Python, SQL, and Deep Learning.</p>
             </div>
 
             <div class="footer-col">
@@ -100,12 +100,10 @@ const currentPath = Astro.url.pathname;
             </div>
 
             <div class="footer-col">
-              <h3>Follow Me</h3>
+              <h3>Connect</h3>
               <div class="footer-social">
-                <a href="#" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="#" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" target="_blank" title="Twitter"><i class="fab fa-x-twitter"></i></a>
-                <a href="#" target="_blank" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://github.com/" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="mailto:tjagadeesh2903@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
               </div>
             </div>
           </div>
@@ -114,7 +112,7 @@ const currentPath = Astro.url.pathname;
 
       <div class="footer-bottom">
         <div class="container">
-          <p>&copy; {new Date().getFullYear()} Tanniru Jagadeesh Kumar. All rights reserved. | Made with ❤️ by <a href="#" style="color: #DAA520; text-decoration: none;">Jagadeesh</a></p>
+          <p>&copy; {new Date().getFullYear()} Tanniru Jagadeesh Kumar. All rights reserved.</p>
         </div>
       </div>
     </footer>
@@ -156,7 +154,7 @@ const currentPath = Astro.url.pathname;
   }
 
   .header.scrolled {
-    background: rgba(10, 10, 10, 0.95);
+    background: rgba(13, 13, 12, 0.95);
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);
   }
@@ -191,7 +189,7 @@ const currentPath = Astro.url.pathname;
 
   .logo-subtitle {
     font-size: 0.65rem;
-    color: var(--text-secondary);
+    color: var(--text-muted);
     letter-spacing: 4px;
     text-transform: uppercase;
   }
@@ -222,7 +220,7 @@ const currentPath = Astro.url.pathname;
   .nav a:hover,
   .nav a.active {
     color: var(--gold);
-    background: rgba(218, 165, 32, 0.1);
+    background: var(--gold-bg-strong);
   }
 
   .menu-toggle {
@@ -327,7 +325,7 @@ const currentPath = Astro.url.pathname;
 
   .footer-main {
     background: var(--bg-card);
-    border-top: 1px solid var(--gold-border);
+    border-top: 1px solid var(--border);
     padding: 3rem 0 2rem;
   }
 
@@ -395,7 +393,7 @@ const currentPath = Astro.url.pathname;
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: rgba(218, 165, 32, 0.1);
+    background: var(--gold-bg-strong);
     color: var(--gold);
     font-size: 1.1rem;
     transition: all 0.3s ease;
@@ -409,9 +407,9 @@ const currentPath = Astro.url.pathname;
   }
 
   .footer-bottom {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.4);
     padding: 1.2rem 0;
-    border-top: 1px solid var(--gold-border);
+    border-top: 1px solid var(--border);
   }
 
   .footer-bottom p {

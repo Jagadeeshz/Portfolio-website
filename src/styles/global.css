@@ -1,3 +1,4 @@
+/* ============ RESET ============ */
 *,
 *::before,
 *::after {
@@ -6,25 +7,29 @@
   padding: 0;
 }
 
+/* ============ DESIGN TOKENS ============ */
 :root {
-  --gold: #DAA520;
-  --gold-dark: #B8960C;
-  --gold-light: #FFD700;
-  --bg-dark: #0a0a0a;
-  --bg-card: #1a1a1a;
-  --text-primary: #fff;
-  --text-secondary: #ccc;
-  --text-muted: #999;
-  --gold-border: rgba(218, 165, 32, 0.15);
-  --gold-border-strong: rgba(218, 165, 32, 0.3);
-  --gold-bg: rgba(218, 165, 32, 0.05);
-  --gold-bg-strong: rgba(218, 165, 32, 0.1);
-  --gradient-primary: linear-gradient(135deg, #DAA520, #FFD700);
+  --gold: #f4c414;
+  --gold-dark: #c9a20e;
+  --gold-light: #ffd54f;
+  --bg-dark: #0d0d0c;
+  --bg-card: #161614;
+  --border: #2a2a27;
+  --border-strong: #3a3a36;
+  --text-primary: #f5f5f5;
+  --text-secondary: #b0b0aa;
+  --text-muted: #787872;
+  --gold-border: rgba(244, 196, 20, 0.12);
+  --gold-border-strong: rgba(244, 196, 20, 0.28);
+  --gold-bg: rgba(244, 196, 20, 0.04);
+  --gold-bg-strong: rgba(244, 196, 20, 0.09);
+  --gradient-primary: linear-gradient(135deg, #f4c414, #ffd54f);
   --font-body: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --elevation-1: 0 2px 8px rgba(0, 0, 0, 0.3);
-  --elevation-2: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --elevation-1: 0 2px 8px rgba(0, 0, 0, 0.35);
+  --elevation-2: 0 6px 24px rgba(0, 0, 0, 0.45);
 }
 
+/* ============ BASE ============ */
 html {
   font-size: 16px;
   scroll-behavior: smooth;
@@ -54,26 +59,26 @@ img {
   display: block;
 }
 
-/* Container */
+/* ============ CONTAINER ============ */
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 1.5rem;
 }
 
-/* Section */
+/* ============ SECTION ============ */
 .section {
-  padding: 3rem 0;
+  padding: 5rem 0;
 }
 
 .section-dark {
-  background: rgba(10, 10, 10, 0.7);
+  background: rgba(13, 13, 12, 0.7);
 }
 
-/* Page Hero */
+/* ============ PAGE HERO (sub-pages) ============ */
 .page-hero {
   padding: 4rem 0;
-  background: linear-gradient(135deg, rgba(10, 10, 10, 1) 0%, rgba(218, 165, 32, 0.08) 50%, rgba(10, 10, 10, 1) 100%);
+  background: linear-gradient(135deg, rgba(13, 13, 12, 1) 0%, rgba(244, 196, 20, 0.06) 50%, rgba(13, 13, 12, 1) 100%);
 }
 
 .page-hero-title {
@@ -92,13 +97,13 @@ img {
   margin: 0 auto;
 }
 
-/* About Card */
+/* ============ ABOUT CARD ============ */
 .about-card {
   background: var(--bg-card);
   border-radius: 15px;
   padding: 2rem;
   margin-bottom: 2rem;
-  border: 1px solid var(--gold-border);
+  border: 1px solid var(--border);
   box-shadow: var(--elevation-2);
 }
 
@@ -137,7 +142,7 @@ img {
   font-weight: bold;
 }
 
-/* Image-Content Wrapper */
+/* ============ IMAGE-CONTENT WRAPPER ============ */
 .image-content-wrapper {
   display: flex;
   gap: 2rem;
@@ -186,7 +191,7 @@ img {
 
 .image-container:hover {
   transform: scale(1.05);
-  box-shadow: 0 15px 40px rgba(218, 165, 32, 0.4);
+  box-shadow: 0 15px 40px rgba(244, 196, 20, 0.3);
 }
 
 .image-container:hover img {
@@ -209,7 +214,7 @@ img {
   font-size: 1.2rem;
 }
 
-/* Stats Grid */
+/* ============ STATS GRID ============ */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -237,7 +242,7 @@ img {
   font-size: 1rem;
 }
 
-/* Milestone Timeline */
+/* ============ MILESTONE TIMELINE ============ */
 .milestone-timeline {
   position: relative;
   padding-left: 2rem;
@@ -259,7 +264,7 @@ img {
   position: relative;
   margin-bottom: 2rem;
   padding: 1.5rem;
-  background: rgba(26, 26, 26, 0.7);
+  background: rgba(22, 22, 20, 0.7);
   border-radius: 10px;
   border-left: 3px solid var(--gold);
 }
@@ -273,7 +278,7 @@ img {
   height: 20px;
   background: var(--gold);
   border-radius: 50%;
-  border: 4px solid #000;
+  border: 4px solid var(--bg-dark);
 }
 
 .milestone-year {
@@ -296,7 +301,7 @@ img {
   line-height: 1.6;
 }
 
-/* Quote */
+/* ============ QUOTE ============ */
 .quote {
   font-style: italic;
   padding: 1.5rem;
@@ -319,7 +324,7 @@ img {
   text-align: right;
 }
 
-/* Grid */
+/* ============ GRID UTILITIES ============ */
 .grid {
   display: grid;
   gap: 1.5rem;
@@ -337,7 +342,7 @@ img {
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 
-/* Responsive */
+/* ============ RESPONSIVE ============ */
 @media (max-width: 768px) {
   .image-container {
     width: 200px;

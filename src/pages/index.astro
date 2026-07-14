@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const skills = [
+const skillCategories = [
   {
     category: 'Backend & Core',
     icon: 'fas fa-server',
@@ -18,16 +18,17 @@ const skills = [
     items: ['MySQL'],
   },
   {
-    category: 'Tools & Deployment',
+    category: 'Tools & Cloud',
     icon: 'fas fa-tools',
     items: ['GitHub', 'AWS (Basics)'],
   },
-  {
-    category: 'Specialized Frameworks',
-    icon: 'fas fa-brain',
-    items: ['TensorFlow', 'Keras', 'GANs', 'OpenCV', 'UNet++'],
-  },
 ];
+
+const featuredSkill = {
+  category: 'Specialized Frameworks & Deep Learning',
+  icon: 'fas fa-brain',
+  items: ['TensorFlow', 'Keras', 'GANs', 'OpenCV', 'UNet++'],
+};
 
 const education = [
   {
@@ -54,16 +55,15 @@ const projectHighlights = [
   'Evaluated model performance using IoU, Dice Coefficient, Precision, and Recall metrics to ensure reliable segmentation accuracy.',
 ];
 
-const techTags = ['TensorFlow', 'Keras', 'UNet++', 'GANs', 'OpenCV', 'Python'];
+const techTags = ['Python', 'TensorFlow', 'Keras', 'GANs', 'OpenCV', 'UNet++'];
 ---
 
 <BaseLayout title="Home">
-  <!-- Hero Section -->
+  <!-- ==================== HERO ==================== -->
   <section class="hero">
     <div class="hero-bg-shapes">
       <div class="hero-shape hero-shape-1"></div>
       <div class="hero-shape hero-shape-2"></div>
-      <div class="hero-shape hero-shape-3"></div>
     </div>
     <div class="container hero-inner">
       <div class="hero-content">
@@ -82,24 +82,27 @@ const techTags = ['TensorFlow', 'Keras', 'UNet++', 'GANs', 'OpenCV', 'Python'];
           <a href="#projects" class="btn btn-primary">
             <i class="fas fa-code"></i> View My Work
           </a>
-          <a href="#" class="btn btn-outline" download>
-            <i class="fas fa-download"></i> Download Resume
-          </a>
         </div>
       </div>
+
       <div class="hero-visual">
-        <div class="hero-avatar">
-          <div class="hero-avatar-inner">
-            <i class="fas fa-user-astronaut"></i>
+        <div class="profile-ring">
+          <div class="profile-ring-glow"></div>
+          <img
+            src="/images/profile.jpg"
+            alt="T. Jagadeesh Kumar"
+            class="profile-image"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
+          />
+          <div class="profile-fallback" style="display:none;">
+            <i class="fas fa-user"></i>
           </div>
         </div>
-        <div class="hero-orbit hero-orbit-1"></div>
-        <div class="hero-orbit hero-orbit-2"></div>
       </div>
     </div>
   </section>
 
-  <!-- About & Education Section -->
+  <!-- ==================== ABOUT & EDUCATION ==================== -->
   <section class="section" id="about">
     <div class="container">
       <div class="section-header">
@@ -150,7 +153,7 @@ const techTags = ['TensorFlow', 'Keras', 'UNet++', 'GANs', 'OpenCV', 'Python'];
     </div>
   </section>
 
-  <!-- Technical Skills Section -->
+  <!-- ==================== TECHNICAL SKILLS ==================== -->
   <section class="section section-alt" id="skills">
     <div class="container">
       <div class="section-header">
@@ -158,8 +161,22 @@ const techTags = ['TensorFlow', 'Keras', 'UNet++', 'GANs', 'OpenCV', 'Python'];
         <div class="section-line"></div>
       </div>
 
+      <!-- Featured full-width card -->
+      <div class="skill-card skill-card-featured">
+        <div class="skill-card-header">
+          <i class={featuredSkill.icon}></i>
+          <h3>{featuredSkill.category}</h3>
+        </div>
+        <div class="skill-tags">
+          {featuredSkill.items.map((item) => (
+            <span class="skill-tag">{item}</span>
+          ))}
+        </div>
+      </div>
+
+      <!-- Standard grid -->
       <div class="skills-grid">
-        {skills.map((skill) => (
+        {skillCategories.map((skill) => (
           <div class="skill-card">
             <div class="skill-card-header">
               <i class={skill.icon}></i>
@@ -176,11 +193,11 @@ const techTags = ['TensorFlow', 'Keras', 'UNet++', 'GANs', 'OpenCV', 'Python'];
     </div>
   </section>
 
-  <!-- Projects Section -->
+  <!-- ==================== FEATURED PROJECT ==================== -->
   <section class="section" id="projects">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">Projects</h2>
+        <h2 class="section-title">Featured Project</h2>
         <div class="section-line"></div>
       </div>
 
@@ -191,7 +208,7 @@ const techTags = ['TensorFlow', 'Keras', 'UNet++', 'GANs', 'OpenCV', 'Python'];
             <div class="project-icon">
               <i class="fas fa-microscope"></i>
             </div>
-            <div class="project-badge">Flagship Project</div>
+            <div class="project-badge">Academic Research</div>
           </div>
 
           <h3 class="project-title">
@@ -229,7 +246,7 @@ const techTags = ['TensorFlow', 'Keras', 'UNet++', 'GANs', 'OpenCV', 'Python'];
     </div>
   </section>
 
-  <!-- Certifications Section -->
+  <!-- ==================== CERTIFICATIONS ==================== -->
   <section class="section section-alt" id="certifications">
     <div class="container">
       <div class="section-header">
@@ -252,7 +269,7 @@ const techTags = ['TensorFlow', 'Keras', 'UNet++', 'GANs', 'OpenCV', 'Python'];
     </div>
   </section>
 
-  <!-- Contact Section -->
+  <!-- ==================== CONTACT ==================== -->
   <section class="section" id="contact">
     <div class="container">
       <div class="section-header">
@@ -260,29 +277,29 @@ const techTags = ['TensorFlow', 'Keras', 'UNet++', 'GANs', 'OpenCV', 'Python'];
         <div class="section-line"></div>
       </div>
 
-      <div class="contact-grid">
-        <a href="mailto:tjagadeesh2903@gmail.com" class="contact-card">
-          <div class="contact-icon">
+      <div class="contact-row">
+        <a href="mailto:tjagadeesh2903@gmail.com" class="contact-link">
+          <span class="contact-icon-wrap">
             <i class="fas fa-envelope"></i>
-          </div>
-          <h4>Email</h4>
-          <p>tjagadeesh2903@gmail.com</p>
+          </span>
+          <span class="contact-label">Email</span>
+          <span class="contact-value">tjagadeesh2903@gmail.com</span>
         </a>
 
-        <a href="tel:+916303431386" class="contact-card">
-          <div class="contact-icon">
+        <a href="tel:+916303431386" class="contact-link">
+          <span class="contact-icon-wrap">
             <i class="fas fa-phone-alt"></i>
-          </div>
-          <h4>Phone</h4>
-          <p>+91 6303431386</p>
+          </span>
+          <span class="contact-label">Phone</span>
+          <span class="contact-value">+91 6303431386</span>
         </a>
 
-        <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="contact-card">
-          <div class="contact-icon">
+        <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="contact-link">
+          <span class="contact-icon-wrap">
             <i class="fab fa-github"></i>
-          </div>
-          <h4>GitHub</h4>
-          <p>github.com/jagadeesh</p>
+          </span>
+          <span class="contact-label">GitHub</span>
+          <span class="contact-value">github.com/jagadeesh</span>
         </a>
       </div>
     </div>
@@ -290,7 +307,9 @@ const techTags = ['TensorFlow', 'Keras', 'UNet++', 'GANs', 'OpenCV', 'Python'];
 </BaseLayout>
 
 <style>
-  /* ============ HERO ============ */
+  /* ===========================================================
+     HERO
+     =========================================================== */
   .hero {
     position: relative;
     min-height: 100vh;
@@ -299,9 +318,9 @@ const techTags = ['TensorFlow', 'Keras', 'UNet++', 'GANs', 'OpenCV', 'Python'];
     overflow: hidden;
     background: linear-gradient(
       160deg,
-      var(--bg-dark) 0%,
-      rgba(218, 165, 32, 0.04) 40%,
-      var(--bg-dark) 100%
+      #0d0d0c 0%,
+      rgba(244, 196, 20, 0.03) 45%,
+      #0d0d0c 100%
     );
   }
 
@@ -314,54 +333,47 @@ const techTags = ['TensorFlow', 'Keras', 'UNet++', 'GANs', 'OpenCV', 'Python'];
   .hero-shape {
     position: absolute;
     border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.12;
+    filter: blur(90px);
+    opacity: 0.10;
   }
 
   .hero-shape-1 {
     width: 500px;
     height: 500px;
     background: var(--gold);
-    top: -10%;
+    top: -8%;
     right: -5%;
   }
 
   .hero-shape-2 {
-    width: 300px;
-    height: 300px;
+    width: 320px;
+    height: 320px;
     background: var(--gold-light);
-    bottom: 10%;
-    left: -5%;
-  }
-
-  .hero-shape-3 {
-    width: 200px;
-    height: 200px;
-    background: var(--gold-dark);
-    top: 40%;
-    left: 30%;
+    bottom: 5%;
+    left: -4%;
   }
 
   .hero-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 3rem;
+    gap: 4rem;
     padding-top: 6rem;
     position: relative;
     z-index: 1;
   }
 
+  /* -- Left column -- */
   .hero-content {
     flex: 1;
-    max-width: 640px;
+    max-width: 620px;
   }
 
   .hero-greeting {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     color: var(--gold);
     font-weight: 600;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     text-transform: uppercase;
     margin-bottom: 0.5rem;
   }
@@ -370,12 +382,12 @@ const techTags = ['TensorFlow', 'Keras', 'UNet++', 'GANs', 'OpenCV', 'Python'];
     font-size: 3.5rem;
     font-weight: 800;
     color: var(--text-primary);
-    line-height: 1.15;
+    line-height: 1.12;
     margin-bottom: 1rem;
   }
 
   .hero-subtitle {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     color: var(--text-secondary);
     line-height: 1.7;
     margin-bottom: 1.25rem;
@@ -389,9 +401,9 @@ const techTags = ['TensorFlow', 'Keras', 'UNet++', 'GANs', 'OpenCV', 'Python'];
   .hero-bio {
     font-size: 1.05rem;
     color: var(--text-muted);
-    line-height: 1.8;
-    margin-bottom: 2rem;
-    max-width: 560px;
+    line-height: 1.85;
+    margin-bottom: 2.25rem;
+    max-width: 540px;
   }
 
   .hero-actions {
@@ -400,11 +412,12 @@ const techTags = ['TensorFlow', 'Keras', 'UNet++', 'GANs', 'OpenCV', 'Python'];
     flex-wrap: wrap;
   }
 
+  /* -- Buttons -- */
   .btn {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.85rem 2rem;
+    padding: 0.85rem 2.25rem;
     border-radius: 10px;
     font-size: 1rem;
     font-weight: 600;
@@ -417,88 +430,75 @@ const techTags = ['TensorFlow', 'Keras', 'UNet++', 'GANs', 'OpenCV', 'Python'];
 
   .btn-primary {
     background: var(--gradient-primary);
-    color: #000;
+    color: #0d0d0c;
     border-color: var(--gold);
   }
 
   .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(218, 165, 32, 0.35);
-    color: #000;
+    box-shadow: 0 8px 28px rgba(244, 196, 20, 0.3);
+    color: #0d0d0c;
   }
 
-  .btn-outline {
-    background: transparent;
-    color: var(--gold);
-    border-color: var(--gold-border-strong);
-  }
-
-  .btn-outline:hover {
-    border-color: var(--gold);
-    background: var(--gold-bg-strong);
-    transform: translateY(-2px);
-    color: var(--gold);
-  }
-
+  /* -- Right column / profile image -- */
   .hero-visual {
-    position: relative;
-    width: 320px;
-    height: 320px;
     flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  .hero-avatar {
+  .profile-ring {
     position: relative;
-    z-index: 2;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    padding: 6px;
+    background: var(--gradient-primary);
   }
 
-  .hero-avatar-inner {
-    width: 180px;
-    height: 180px;
+  .profile-ring-glow {
+    position: absolute;
+    inset: -14px;
     border-radius: 50%;
-    background: var(--gradient-primary);
+    background: radial-gradient(circle, rgba(244, 196, 20, 0.18) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .profile-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #1a1a18;
+    position: relative;
+    z-index: 1;
+  }
+
+  .profile-fallback {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: #1a1a18;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 4.5rem;
-    color: #000;
-    box-shadow: 0 0 60px rgba(218, 165, 32, 0.25);
+    font-size: 5rem;
+    color: var(--gold);
+    position: relative;
+    z-index: 1;
   }
 
-  .hero-orbit {
-    position: absolute;
-    border-radius: 50%;
-    border: 1px solid var(--gold-border);
-  }
-
-  .hero-orbit-1 {
-    width: 260px;
-    height: 260px;
-    animation: orbit-spin 20s linear infinite;
-  }
-
-  .hero-orbit-2 {
-    width: 320px;
-    height: 320px;
-    border-style: dashed;
-    animation: orbit-spin 30s linear infinite reverse;
-  }
-
-  @keyframes orbit-spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-
-  /* ============ SECTIONS ============ */
+  /* ===========================================================
+     SECTION UTILITIES
+     =========================================================== */
   .section {
     padding: 5rem 0;
   }
 
   .section-alt {
-    background: rgba(26, 26, 26, 0.5);
+    background: rgba(22, 22, 20, 0.45);
   }
 
   .section-header {
@@ -521,7 +521,9 @@ const techTags = ['TensorFlow', 'Keras', 'UNet++', 'GANs', 'OpenCV', 'Python'];
     border-radius: 3px;
   }
 
-  /* ============ ABOUT & EDUCATION ============ */
+  /* ===========================================================
+     ABOUT & EDUCATION
+     =========================================================== */
   .about-grid {
     display: grid;
     grid-template-columns: 1.2fr 1fr;
@@ -531,7 +533,7 @@ const techTags = ['TensorFlow', 'Keras', 'UNet++', 'GANs', 'OpenCV', 'Python'];
 
   .about-text-card {
     background: var(--bg-card);
-    border: 1px solid var(--gold-border);
+    border: 1px solid var(--border);
     border-radius: 16px;
     padding: 2rem;
   }
@@ -564,7 +566,7 @@ const techTags = ['TensorFlow', 'Keras', 'UNet++', 'GANs', 'OpenCV', 'Python'];
 
   .education-card {
     background: var(--bg-card);
-    border: 1px solid var(--gold-border);
+    border: 1px solid var(--border);
     border-radius: 16px;
     padding: 1.5rem;
     display: flex;
@@ -628,7 +630,13 @@ const techTags = ['TensorFlow', 'Keras', 'UNet++', 'GANs', 'OpenCV', 'Python'];
     color: var(--gold) !important;
   }
 
-  /* ============ SKILLS ============ */
+  /* ===========================================================
+     SKILLS
+     =========================================================== */
+  .skill-card-featured {
+    margin-bottom: 1.5rem;
+  }
+
   .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -637,7 +645,7 @@ const techTags = ['TensorFlow', 'Keras', 'UNet++', 'GANs', 'OpenCV', 'Python'];
 
   .skill-card {
     background: var(--bg-card);
-    border: 1px solid var(--gold-border);
+    border: 1px solid var(--border);
     border-radius: 16px;
     padding: 1.5rem;
     transition: border-color 0.3s ease, transform 0.3s ease;
@@ -654,7 +662,7 @@ const techTags = ['TensorFlow', 'Keras', 'UNet++', 'GANs', 'OpenCV', 'Python'];
     gap: 0.75rem;
     margin-bottom: 1rem;
     padding-bottom: 0.75rem;
-    border-bottom: 1px solid var(--gold-border);
+    border-bottom: 1px solid var(--border);
   }
 
   .skill-card-header i {
@@ -677,11 +685,11 @@ const techTags = ['TensorFlow', 'Keras', 'UNet++', 'GANs', 'OpenCV', 'Python'];
   .skill-tag {
     background: var(--bg-dark);
     color: var(--text-secondary);
-    padding: 5px 14px;
+    padding: 6px 16px;
     border-radius: 8px;
-    font-size: 0.85rem;
+    font-size: 0.875rem;
     font-weight: 500;
-    border: 1px solid var(--gold-border);
+    border: 1px solid var(--border);
     transition: all 0.25s ease;
   }
 
@@ -689,12 +697,15 @@ const techTags = ['TensorFlow', 'Keras', 'UNet++', 'GANs', 'OpenCV', 'Python'];
     background: var(--gold-bg-strong);
     color: var(--gold);
     border-color: var(--gold-border-strong);
+    transform: scale(1.05);
   }
 
-  /* ============ PROJECTS ============ */
+  /* ===========================================================
+     PROJECTS
+     =========================================================== */
   .project-card {
     background: var(--bg-card);
-    border: 1px solid var(--gold-border);
+    border: 1px solid var(--border);
     border-radius: 16px;
     overflow: hidden;
     display: flex;
@@ -702,7 +713,7 @@ const techTags = ['TensorFlow', 'Keras', 'UNet++', 'GANs', 'OpenCV', 'Python'];
   }
 
   .project-card:hover {
-    box-shadow: 0 8px 40px rgba(218, 165, 32, 0.12);
+    box-shadow: 0 8px 40px rgba(244, 196, 20, 0.08);
   }
 
   .project-card-accent {
@@ -732,7 +743,7 @@ const techTags = ['TensorFlow', 'Keras', 'UNet++', 'GANs', 'OpenCV', 'Python'];
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
-    color: #000;
+    color: #0d0d0c;
   }
 
   .project-badge {
@@ -761,7 +772,7 @@ const techTags = ['TensorFlow', 'Keras', 'UNet++', 'GANs', 'OpenCV', 'Python'];
   }
 
   .tech-tag {
-    background: rgba(218, 165, 32, 0.1);
+    background: var(--gold-bg);
     color: var(--gold);
     padding: 5px 14px;
     border-radius: 20px;
@@ -803,7 +814,7 @@ const techTags = ['TensorFlow', 'Keras', 'UNet++', 'GANs', 'OpenCV', 'Python'];
     flex-wrap: wrap;
     gap: 1rem;
     padding-top: 1.5rem;
-    border-top: 1px solid var(--gold-border);
+    border-top: 1px solid var(--border);
   }
 
   .metric {
@@ -821,7 +832,9 @@ const techTags = ['TensorFlow', 'Keras', 'UNet++', 'GANs', 'OpenCV', 'Python'];
     color: var(--gold);
   }
 
-  /* ============ CERTIFICATIONS ============ */
+  /* ===========================================================
+     CERTIFICATIONS
+     =========================================================== */
   .cert-grid {
     display: flex;
     justify-content: center;
@@ -829,7 +842,7 @@ const techTags = ['TensorFlow', 'Keras', 'UNet++', 'GANs', 'OpenCV', 'Python'];
 
   .cert-card {
     background: var(--bg-card);
-    border: 1px solid var(--gold-border);
+    border: 1px solid var(--border);
     border-radius: 16px;
     padding: 2rem;
     display: flex;
@@ -854,7 +867,7 @@ const techTags = ['TensorFlow', 'Keras', 'UNet++', 'GANs', 'OpenCV', 'Python'];
     align-items: center;
     justify-content: center;
     font-size: 1.6rem;
-    color: #000;
+    color: #0d0d0c;
     flex-shrink: 0;
   }
 
@@ -877,57 +890,67 @@ const techTags = ['TensorFlow', 'Keras', 'UNet++', 'GANs', 'OpenCV', 'Python'];
     margin-top: 0.25rem;
   }
 
-  /* ============ CONTACT ============ */
-  .contact-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  /* ===========================================================
+     CONTACT
+     =========================================================== */
+  .contact-row {
+    display: flex;
+    justify-content: center;
     gap: 1.5rem;
+    flex-wrap: wrap;
     max-width: 960px;
     margin: 0 auto;
   }
 
-  .contact-card {
+  .contact-link {
+    flex: 1 1 260px;
+    max-width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
     background: var(--bg-card);
-    border: 1px solid var(--gold-border);
+    border: 1px solid var(--border);
     border-radius: 16px;
-    padding: 2rem;
-    text-align: center;
+    padding: 2rem 1.5rem;
     text-decoration: none;
-    transition: all 0.3s ease;
+    text-align: center;
+    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
   }
 
-  .contact-card:hover {
+  .contact-link:hover {
     border-color: var(--gold-border-strong);
     transform: translateY(-4px);
-    box-shadow: 0 8px 30px rgba(218, 165, 32, 0.12);
+    box-shadow: 0 8px 30px rgba(244, 196, 20, 0.08);
   }
 
-  .contact-icon {
-    width: 60px;
-    height: 60px;
+  .contact-icon-wrap {
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
     background: var(--gold-bg-strong);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     color: var(--gold);
-    margin: 0 auto 1rem;
   }
 
-  .contact-card h4 {
-    font-size: 1.1rem;
-    color: var(--text-primary);
+  .contact-label {
+    font-size: 1rem;
     font-weight: 600;
-    margin-bottom: 0.3rem;
+    color: var(--text-primary);
   }
 
-  .contact-card p {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
+  .contact-value {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    word-break: break-all;
   }
 
-  /* ============ RESPONSIVE ============ */
+  /* ===========================================================
+     RESPONSIVE
+     =========================================================== */
   @media (max-width: 900px) {
     .hero-inner {
       flex-direction: column-reverse;
@@ -953,19 +976,14 @@ const techTags = ['TensorFlow', 'Keras', 'UNet++', 'GANs', 'OpenCV', 'Python'];
       justify-content: center;
     }
 
-    .hero-visual {
-      width: 240px;
-      height: 240px;
+    .profile-ring {
+      width: 220px;
+      height: 220px;
     }
 
-    .hero-avatar-inner {
-      width: 140px;
-      height: 140px;
-      font-size: 3.5rem;
+    .profile-fallback {
+      font-size: 4rem;
     }
-
-    .hero-orbit-1 { width: 200px; height: 200px; }
-    .hero-orbit-2 { width: 240px; height: 240px; }
 
     .about-grid {
       grid-template-columns: 1fr;
@@ -998,6 +1016,15 @@ const techTags = ['TensorFlow', 'Keras', 'UNet++', 'GANs', 'OpenCV', 'Python'];
       font-size: 0.9rem;
     }
 
+    .profile-ring {
+      width: 180px;
+      height: 180px;
+    }
+
+    .profile-fallback {
+      font-size: 3rem;
+    }
+
     .project-card-body {
       padding: 1.5rem;
     }
@@ -1012,6 +1039,20 @@ const techTags = ['TensorFlow', 'Keras', 'UNet++', 'GANs', 'OpenCV', 'Python'];
 
     .skills-grid {
       grid-template-columns: 1fr;
+    }
+
+    .skill-card-featured .skill-tags {
+      justify-content: center;
+    }
+
+    .contact-row {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .contact-link {
+      max-width: 100%;
+      width: 100%;
     }
   }
 </style>
