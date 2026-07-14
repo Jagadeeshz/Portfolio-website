@@ -3,28 +3,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const experiences = [
   {
-    title: 'Software Developer Intern',
-    organization: 'Tech Company',
-    period: '2025 - Present',
-    description: 'Working on full-stack web applications, collaborating with cross-functional teams to deliver features and improve code quality.',
-  },
-  {
-    title: 'Freelance Web Developer',
-    organization: 'Self-Employed',
-    period: '2024 - 2025',
-    description: 'Built and maintained websites for small businesses and individuals, focusing on responsive design and performance.',
-  },
-  {
-    title: 'Open Source Contributor',
-    organization: 'Community',
-    period: '2023 - Present',
-    description: 'Contributed to various open-source projects, fixing bugs, writing documentation, and adding new features.',
-  },
-  {
-    title: 'Project Lead - College Club',
-    organization: 'University',
-    period: '2023 - 2024',
-    description: 'Led a team of students in organizing tech events and workshops, fostering a culture of learning and innovation.',
+    role: 'Associate',
+    company: 'KFintech Solutions Pvt. Ltd.',
+    location: 'Hyderabad, India',
+    period: 'July 2025 — Present',
+    highlights: [
+      'Supporting critical financial operations and client servicing across multiple complex business processes.',
+      'Ensuring strict regulatory compliance and absolute accuracy in investor records management and financial reporting workflows.',
+      'Collaborating extensively with cross-functional technical and operational teams to deliver timely, quality-driven enterprise outcomes.',
+      'Continuously building deep knowledge of financial products, identifying opportunities for process automation, and enhancing investor servicing pipelines.',
+      'Analyzing workflow bottlenecks to assist in implementing basic script-based automation, increasing data processing throughput.',
+      'Utilizing database tools to query, verify, and reconcile large volumes of transactional records with zero tolerance for discrepancies.',
+    ],
   },
 ];
 ---
@@ -33,24 +23,190 @@ const experiences = [
   <section class="page-hero">
     <div class="container">
       <h1 class="page-hero-title">My Experience</h1>
-      <p class="page-hero-description">My professional journey and growth</p>
+      <p class="page-hero-description">Professional career history and contributions</p>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      <div class="about-card">
-        <h2 class="about-card-title">Work Experience</h2>
-        <div class="milestone-timeline">
-          {experiences.map((exp) => (
-            <div class="milestone-item">
-              <div class="milestone-year">{exp.period}</div>
-              <div class="milestone-title">{exp.title}</div>
-              <div class="milestone-description">{exp.organization} &mdash; {exp.description}</div>
+      {experiences.map((exp) => (
+        <div class="exp-card">
+          <div class="exp-timeline">
+            <div class="exp-timeline-dot"></div>
+            <div class="exp-timeline-line"></div>
+          </div>
+          <div class="exp-body">
+            <div class="exp-header">
+              <div>
+                <h3 class="exp-role">{exp.role}</h3>
+                <p class="exp-company">{exp.company}</p>
+              </div>
+              <div class="exp-meta">
+                <span class="exp-location"><i class="fas fa-map-marker-alt"></i> {exp.location}</span>
+                <span class="exp-duration"><i class="far fa-calendar-alt"></i> {exp.period}</span>
+              </div>
             </div>
-          ))}
+            <ul class="exp-highlights">
+              {exp.highlights.map((point) => (
+                <li>{point}</li>
+              ))}
+            </ul>
+          </div>
         </div>
-      </div>
+      ))}
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .exp-card {
+    display: flex;
+    gap: 2rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2.5rem;
+    transition: box-shadow 0.3s ease;
+  }
+
+  .exp-card:hover {
+    box-shadow: 0 8px 40px rgba(244, 196, 20, 0.08);
+  }
+
+  .exp-timeline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    padding-top: 0.25rem;
+  }
+
+  .exp-timeline-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 12px rgba(244, 196, 20, 0.4);
+    flex-shrink: 0;
+  }
+
+  .exp-timeline-line {
+    width: 2px;
+    flex: 1;
+    background: var(--gold-border-strong);
+    margin-top: 0.5rem;
+    border-radius: 2px;
+  }
+
+  .exp-body {
+    flex: 1;
+  }
+
+  .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .exp-role {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+  }
+
+  .exp-company {
+    font-size: 1.05rem;
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  .exp-meta {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .exp-meta span {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    white-space: nowrap;
+  }
+
+  .exp-meta span i {
+    color: var(--gold);
+    font-size: 0.8rem;
+  }
+
+  .exp-highlights {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .exp-highlights li {
+    position: relative;
+    padding-left: 1.5rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .exp-highlights li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6rem;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+
+  @media (max-width: 768px) {
+    .exp-card {
+      flex-direction: column;
+      padding: 2rem;
+    }
+
+    .exp-timeline {
+      flex-direction: row;
+      gap: 0.75rem;
+    }
+
+    .exp-timeline-line {
+      width: auto;
+      height: 2px;
+      flex: 1;
+      margin-top: 0;
+    }
+
+    .exp-header {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .exp-card {
+      padding: 1.5rem;
+    }
+
+    .exp-role {
+      font-size: 1.2rem;
+    }
+
+    .exp-highlights li {
+      font-size: 0.9rem;
+    }
+  }
+</style>
