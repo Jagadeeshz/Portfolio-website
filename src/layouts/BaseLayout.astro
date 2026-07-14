@@ -47,12 +47,6 @@ const currentPath = Astro.url.pathname;
             <a href="/experience" class={currentPath === '/experience' ? 'active' : ''}>
               <i class="fas fa-briefcase"></i> Experience
             </a>
-            <a href="/gallery" class={currentPath === '/gallery' ? 'active' : ''}>
-              <i class="fas fa-images"></i> Gallery
-            </a>
-            <a href="/friends" class={currentPath === '/friends' ? 'active' : ''}>
-              <i class="fas fa-users"></i> Friends
-            </a>
             <a href="/contact" class={currentPath === '/contact' ? 'active' : ''}>
               <i class="fas fa-envelope"></i> Contact
             </a>
@@ -93,8 +87,6 @@ const currentPath = Astro.url.pathname;
             <div class="footer-col">
               <h3>More</h3>
               <ul>
-                <li><a href="/gallery">Gallery</a></li>
-                <li><a href="/friends">Friends</a></li>
                 <li><a href="/contact">Contact</a></li>
               </ul>
             </div>
