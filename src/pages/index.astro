@@ -78,6 +78,29 @@ const stats = [
   { number: '1+', label: 'Years Experience' },
   { number: '7.5', label: 'MCA CGPA' },
 ];
+
+const achievements = [
+  {
+    icon: 'fas fa-trophy',
+    title: '1st Prize — Vignan Mahotsav (2023)',
+    detail: 'Led the team to absolute victory with a flawless theme execution and stage choreography.',
+  },
+  {
+    icon: 'fas fa-medal',
+    title: '2nd Prize — Vignan Mahotsav (2024)',
+    detail: 'Maintained the podium streak against fierce regional competition.',
+  },
+  {
+    icon: 'fas fa-crown',
+    title: '1st Prize: Fashion Walk — KLU Surabhi Event',
+    detail: 'Dominated the runway at KL University, capturing top honors for style, rhythm, and stage presence.',
+  },
+  {
+    icon: 'fas fa-star',
+    title: '1st Prize — Department Fest Fashion Show',
+    detail: 'Choreographed and anchored the winning walk to capture the overall department crown.',
+  },
+];
 ---
 
 <BaseLayout title="Home">
@@ -279,6 +302,42 @@ const stats = [
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ACHIEVEMENTS ==================== -->
+  <section class="section" id="achievements">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Runway &amp; Leadership</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <p class="achievements-intro">
+        Stepping away from the desk and onto the stage&mdash;driving creative
+        vision, choreography, and winning streaks as the college Fashion Team
+        Lead.
+      </p>
+
+      <div class="achievements-grid">
+        {achievements.map((a) => (
+          <div class="achievement-card">
+            <div class="achievement-icon">
+              <i class={a.icon}></i>
+            </div>
+            <div class="achievement-content">
+              <h4 class="achievement-title">{a.title}</h4>
+              <p class="achievement-detail">{a.detail}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="achievements-cta">
+        <a href="/achievements" class="btn btn-outline">
+          <i class="fas fa-trophy"></i> View All Achievements
+        </a>
       </div>
     </div>
   </section>
@@ -931,6 +990,96 @@ const stats = [
   }
 
   /* ===========================================================
+     ACHIEVEMENTS
+     =========================================================== */
+  .achievements-intro {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    max-width: 720px;
+    margin: 0 auto 2.5rem;
+  }
+
+  .achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .achievement-card {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .achievement-card:hover {
+    border-color: var(--gold-border-strong);
+    transform: translateY(-3px);
+  }
+
+  .achievement-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: var(--gold-bg-strong);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+
+  .achievement-title {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    line-height: 1.4;
+  }
+
+  .achievement-detail {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .achievements-cta {
+    text-align: center;
+  }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border: 2px solid var(--gold);
+    color: var(--gold);
+    background: transparent;
+  }
+
+  .btn-outline:hover {
+    background: var(--gold);
+    color: #0d0d0c;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(244, 196, 20, 0.25);
+  }
+
+  /* ===========================================================
      PROJECTS
      =========================================================== */
   .project-card {
@@ -1330,6 +1479,14 @@ const stats = [
 
     .exp-highlights li {
       font-size: 0.9rem;
+    }
+
+    .achievements-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .achievements-intro {
+      font-size: 0.95rem;
     }
   }
 </style>
