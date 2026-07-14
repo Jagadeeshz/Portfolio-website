@@ -25,67 +25,81 @@ const education = [
     </div>
   </section>
 
-  <!-- Content Block A: About Me -->
+  <!-- Narrative + Profile Image Layout -->
   <section class="section">
     <div class="container">
-      <div class="about-card">
-        <h2 class="about-card-title">About Me</h2>
-        <div class="about-content">
-          <p>
-            Hailing from the quiet town of Etukur in Guntur, Andhra Pradesh, I
-            carry the true spirit of a middle-class boy&mdash;grounded, resilient,
-            and unapologetically real. Beyond the professional hustle, I'm a
-            simple, cool guy who believes that life is best measured by the happy
-            moments and the people you share them with.
-          </p>
-          <p>
-            My family is my ultimate anchor; there is nothing better than the
-            quiet comfort, laughter, and grounding conversations back home. On
-            the flip side, my friends are my absolute fuel. From spontaneous
-            roadside tea chats to running the campus like we owned it, making
-            memories and sharing laughs with the boys is what keeps life vibrant.
-          </p>
-          <p>
-            No pretense, no fluff&mdash;just a small-town dreamer navigating life
-            with a sharp sense of style, casual confidence, and a tight-knit
-            circle.
-          </p>
-        </div>
-      </div>
+      <div class="about-layout">
+        <!-- Left: Narrative Blocks -->
+        <div class="about-narrative">
+          <!-- Content Block A: About Me -->
+          <div class="about-card">
+            <h2 class="about-card-title">About Me</h2>
+            <div class="about-content">
+              <p>
+                Hailing from the quiet town of Etukur in Guntur, Andhra Pradesh, I
+                carry the true spirit of a middle-class boy&mdash;grounded, resilient,
+                and unapologetically real. Beyond the professional hustle, I'm a
+                simple, cool guy who believes that life is best measured by the happy
+                moments and the people you share them with.
+              </p>
+              <p>
+                My family is my ultimate anchor; there is nothing better than the
+                quiet comfort, laughter, and grounding conversations back home. On
+                the flip side, my friends are my absolute fuel. From spontaneous
+                roadside tea chats to running the campus like we owned it, making
+                memories and sharing laughs with the boys is what keeps life vibrant.
+              </p>
+              <p>
+                No pretense, no fluff&mdash;just a small-town dreamer navigating life
+                with a sharp sense of style, casual confidence, and a tight-knit
+                circle.
+              </p>
+            </div>
+          </div>
 
-      <!-- Gallery Image -->
-      <div class="gallery-showcase">
-        <div class="gallery-image-wrapper">
-          <img src="/images/gallery-1.jpg" alt="A moment from my journey" class="gallery-img" />
+          <!-- Content Block B: About Website -->
+          <div class="about-card">
+            <h2 class="about-card-title">About This Website</h2>
+            <div class="about-content">
+              <p>
+                This website isn't just a collection of code, grids, and
+                colors&mdash;it is a digital canvas where my two worlds meet. Built
+                from scratch inside VS Code, every line of HTML and CSS written here
+                holds a piece of my journey. It represents the transition of a boy
+                from Etukur who dared to dream big, transforming silent ambitions
+                into something tangible that the world can see.
+              </p>
+              <p>
+                When you look at this site, you aren't just looking at a professional
+                portfolio; you are looking at my dedication, my late nights, and my
+                promise to keep moving forward. It's a bridge built with heart,
+                connecting where I come from to exactly where I am headed.
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <!-- Content Block B: About Website -->
-      <div class="about-card">
-        <h2 class="about-card-title">About This Website</h2>
-        <div class="about-content">
-          <p>
-            This website isn't just a collection of code, grids, and
-            colors&mdash;it is a digital canvas where my two worlds meet. Built
-            from scratch inside VS Code, every line of HTML and CSS written here
-            holds a piece of my journey. It represents the transition of a boy
-            from Etukur who dared to dream big, transforming silent ambitions
-            into something tangible that the world can see.
-          </p>
-          <p>
-            When you look at this site, you aren't just looking at a professional
-            portfolio; you are looking at my dedication, my late nights, and my
-            promise to keep moving forward. It's a bridge built with heart,
-            connecting where I come from to exactly where I am headed.
-          </p>
+        <!-- Right: Profile Image -->
+        <div class="about-image-col">
+          <div class="about-image-wrapper">
+            <img
+              src="/images/profile.jpg"
+              alt="T. Jagadeesh Kumar"
+              class="about-profile-img"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
+            />
+            <div class="about-image-fallback" style="display:none;">
+              <i class="fas fa-user"></i>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- Stats -->
       <div class="stats-grid">
         <div class="stat-card">
-          <div class="stat-number">1</div>
-          <div class="stat-label">Project Built</div>
+          <div class="stat-number">2</div>
+          <div class="stat-label">Projects Built</div>
         </div>
         <div class="stat-card">
           <div class="stat-number">5+</div>
@@ -125,11 +139,25 @@ const education = [
 </BaseLayout>
 
 <style>
-  .gallery-showcase {
-    margin: 2rem 0;
+  .about-layout {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 2.5rem;
+    align-items: start;
   }
 
-  .gallery-image-wrapper {
+  .about-narrative {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .about-image-col {
+    position: sticky;
+    top: 6rem;
+  }
+
+  .about-image-wrapper {
     background: var(--bg-card);
     border: 2px solid var(--gold-border-strong);
     border-radius: 16px;
@@ -138,21 +166,59 @@ const education = [
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
   }
 
-  .gallery-image-wrapper:hover {
+  .about-image-wrapper:hover {
     border-color: var(--gold);
     box-shadow: 0 0 50px rgba(244, 196, 20, 0.2);
   }
 
-  .gallery-img {
+  .about-profile-img {
     width: 100%;
-    height: 420px;
+    height: 500px;
     object-fit: cover;
     display: block;
     transition: transform 0.5s ease;
   }
 
-  .gallery-image-wrapper:hover .gallery-img {
+  .about-image-wrapper:hover .about-profile-img {
     transform: scale(1.03);
+  }
+
+  .about-image-fallback {
+    width: 100%;
+    height: 500px;
+    background: var(--bg-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    color: var(--gold);
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 3rem 0;
+  }
+
+  .stat-card {
+    background: var(--gold-bg-strong);
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    border: 1px solid var(--gold-border-strong);
+  }
+
+  .stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-label {
+    color: var(--text-secondary);
+    font-size: 1rem;
   }
 
   .edu-section {
@@ -229,13 +295,30 @@ const education = [
     color: var(--gold) !important;
   }
 
+  @media (max-width: 900px) {
+    .about-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .about-image-col {
+      position: static;
+      order: -1;
+    }
+
+    .about-profile-img,
+    .about-image-fallback {
+      height: 350px;
+    }
+  }
+
   @media (max-width: 600px) {
     .edu-grid {
       grid-template-columns: 1fr;
     }
 
-    .gallery-img {
-      height: 260px;
+    .about-profile-img,
+    .about-image-fallback {
+      height: 280px;
     }
   }
 </style>
